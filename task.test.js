@@ -38,7 +38,8 @@ describe('dealership', () => {
     })
 
     test('can return manufacturers for each car', () => {
-        expect(task.dealership1.getAllManufacturers()).toEqual(["BMW", "BMW"]);
+        let manufacturers = task.dealership1.getAllManufacturers();
+        expect(manufacturers.length).toEqual(2);
     })
 
     test('can get all the cars from a given manufacturer', () => {
