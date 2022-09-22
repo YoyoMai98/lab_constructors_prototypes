@@ -1,0 +1,15 @@
+{
+  "name": "lab_car_dealership",
+  "version": "1.0.0",
+  "description": "",
+  "main": "task_constructors_prototypes.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "author": "Yongran",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.0.3"
+  }
+}
