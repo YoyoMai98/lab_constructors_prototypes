@@ -37,6 +37,18 @@ describe('dealership', () => {
         expect(task.dealership1.countNumberOfCars()).toEqual(2);
     })
 
+    test('can find a given manufacturer', () => {
+        expect(task.dealership1.findAGivenManufacturer("BMW").length).toEqual(2);
+    })
+
+    test('can find a given price', () => {
+        expect(task.dealership1.findAGivenPrice(46).length).toEqual(1);
+    })
+
+    test('can find a given engine type', () => {
+        expect(task.dealership1.findAGivenEngineType("N46").length).toEqual(1);
+    })
+
     test('can return manufacturers for each car', () => {
         let manufacturers = task.dealership1.getAllManufacturers();
         expect(manufacturers.length).toEqual(2);

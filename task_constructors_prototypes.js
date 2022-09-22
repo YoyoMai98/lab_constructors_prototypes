@@ -36,6 +36,12 @@ Dealership.prototype.getAllManufacturers = function(){
 Dealership.prototype.findAGivenManufacturer = function(manufacturer){
     return this.cars.filter(car => car.getManufacturer() === manufacturer);
 }
+Dealership.prototype.findAGivenPrice = function(price){
+    return this.cars.filter(car => car.getPrice() === price);
+}
+Dealership.prototype.findAGivenEngineType = function(engineType){
+    return this.cars.filter(car => car.getEngineType() === engineType);
+}
 Dealership.prototype.countTotalValue = function(){
     return this.cars.reduce((reducer, car) => reducer + car.getPrice(), 0)
 }
