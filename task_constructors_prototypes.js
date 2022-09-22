@@ -40,11 +40,30 @@ Dealership.prototype.countTotalValue = function(){
     return this.cars.reduce((reducer, car) => reducer + car.getPrice(), 0)
 }
 
+const Customer = function(customerName, wallet){
+    this.customerName = customerName;
+    this.wallet = wallet;
+    this.car = null;
+}
+Customer.prototype.getWallet = function(){return this.wallet};
+Customer.prototype.setWallet = function(wallet){this.wallet -= wallet};
+Customer.prototype.getCar = function(){return this.car};
+Customer.prototype.setCar = function(car){this.car = car};
+Customer.prototype.buyCar = function(car, dealership){
+    if(this.wallet >= car.getPrice()){
+        this.setWallet(car.getPrice());
+        this.car = car;
+        dealership.removeCars(car);
+    }
+}
+
 const car1 = new Car('BMW', 38, 'N46');
 const car2 = new Car('BMW', 46, 'N43');
 const car3 = new Car('BMW', 24, 'N13');
 
 const dealership1 = new Dealership('Cargiant', 2);
 dealership1.addCars(car1);
-console.log(dealership1.countTotalValue());
-module.exports = {car1, car2, car3, dealership1};
+
+const customer1 = new Customer('John', 50);
+
+module.exports = {car1, car2, car3, dealership1, customer1};

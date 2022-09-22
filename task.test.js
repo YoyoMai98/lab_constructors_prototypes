@@ -50,3 +50,23 @@ describe('dealership', () => {
     })
 
 })
+
+describe('customer', () => {
+    test('can customer buy a car', () => {
+        task.customer1.buyCar(task.car1, task.dealership1);
+        expect(task.customer1.getCar().getEngineType()).toEqual("N46");
+    })
+
+    test('can get customer wallet', () => {
+        expect(task.customer1.getWallet()).toEqual(12);
+    })
+
+    test('cannot afford to buy a new car', () => {
+        task.customer1.buyCar(task.car2, task.dealership1);
+        expect(task.customer1.getCar().getEngineType()).toEqual("N46");
+    })
+
+    test('check dealership car stock', () => {
+        expect(task.dealership1.countNumberOfCars()).toEqual(1);
+    })
+})
