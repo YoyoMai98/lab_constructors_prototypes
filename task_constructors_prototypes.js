@@ -22,7 +22,11 @@ Dealership.prototype.setDealerName = function(dealerName){this.dealerName = deal
 Dealership.prototype.getMaxNumberOfCars = function(){return this.maxNumberOfCars};
 Dealership.prototype.setMaxNumberOfCars = function(maxNumberOfCars){this.maxNumberOfCars = maxNumberOfCars};
 Dealership.prototype.getCars = function(){return this.cars};
-Dealership.prototype.addCars = function(car){this.cars.push(car)};
+Dealership.prototype.addCars = function(car){
+    if(this.cars.length < this.getMaxNumberOfCars()){
+        this.cars.push(car);
+    }
+};
 Dealership.prototype.removeCars = function(car){this.cars.splice(this.cars.indexOf(car),1)};
 
 Dealership.prototype.countNumberOfCars = function(){return this.cars.length};
@@ -37,8 +41,10 @@ Dealership.prototype.countTotalValue = function(){
 }
 
 const car1 = new Car('BMW', 38, 'N46');
+const car2 = new Car('BMW', 46, 'N43');
+const car3 = new Car('BMW', 24, 'N13');
 
-const dealership1 = new Dealership('Cargiant', 10);
+const dealership1 = new Dealership('Cargiant', 2);
 dealership1.addCars(car1);
 console.log(dealership1.countTotalValue());
-module.exports = {car1, dealership1};
+module.exports = {car1, car2, car3, dealership1};

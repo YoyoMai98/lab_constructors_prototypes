@@ -20,23 +20,33 @@ describe('dealership', () => {
     })
 
     test('can get max number of cars', () => {
-        expect(task.dealership1.getMaxNumberOfCars()).toEqual(10);
+        expect(task.dealership1.getMaxNumberOfCars()).toEqual(2);
     })
 
     test('can count number of cars', () => {
         expect(task.dealership1.countNumberOfCars()).toEqual(1);
     })
 
+    test('can add car', () => {
+        task.dealership1.addCars(task.car2);
+        expect(task.dealership1.countNumberOfCars()).toEqual(2);
+    })
+
+    test('not able to add car if the stock reach the max number', () => {
+        task.dealership1.addCars(task.car3);
+        expect(task.dealership1.countNumberOfCars()).toEqual(2);
+    })
+
     test('can return manufacturers for each car', () => {
-        expect(task.dealership1.getAllManufacturers()).toEqual(["BMW"]);
+        expect(task.dealership1.getAllManufacturers()).toEqual(["BMW", "BMW"]);
     })
 
     test('can get all the cars from a given manufacturer', () => {
-        expect(task.dealership1.findAGivenManufacturer("BMW").length).toEqual(1);
+        expect(task.dealership1.findAGivenManufacturer("BMW").length).toEqual(2);
     })
 
     test('can find the total value of all the cars in stock', () => {
-        expect(task.dealership1.countTotalValue()).toEqual(38);
+        expect(task.dealership1.countTotalValue()).toEqual(84);
     })
 
 })
