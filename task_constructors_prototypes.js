@@ -56,16 +56,22 @@ Customer.prototype.setWallet = function(wallet){this.wallet -= wallet};
 Customer.prototype.getCar = function(){return this.car};
 Customer.prototype.setCar = function(car){this.car = car};
 Customer.prototype.buyCar = function(car, dealership){
-    if(this.wallet >= car.getPrice()){
+    if(dealership.getCars().some(checkedCar => {
+        return checkedCar.getEngineType() === car.getEngineType() &&
+            checkedCar.getPrice() === car.getPrice() &&
+            checkedCar.getManufacturer() === car.getManufacturer()
+    })){
+        if(this.wallet >= car.getPrice()){
         this.setWallet(car.getPrice());
         this.car = car;
         dealership.removeCars(car);
+        }
     }
 }
 
 const car1 = new Car('BMW', 38, 'N46');
 const car2 = new Car('BMW', 46, 'N43');
-const car3 = new Car('BMW', 24, 'N13');
+const car3 = new Car('BMW', 10, 'N13');
 
 const dealership1 = new Dealership('Cargiant', 2);
 dealership1.addCars(car1);

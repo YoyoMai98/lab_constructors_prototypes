@@ -79,6 +79,11 @@ describe('customer', () => {
         expect(task.customer1.getCar().getEngineType()).toEqual("N46");
     })
 
+    test('cannot buy car that is not in the dealership', () => {
+        task.customer1.buyCar(task.car3, task.dealership1);
+        expect(task.customer1.getCar().getEngineType()).toEqual("N46");
+    })
+
     test('check dealership car stock', () => {
         expect(task.dealership1.countNumberOfCars()).toEqual(1);
     })
